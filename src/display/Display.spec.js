@@ -35,11 +35,13 @@ describe('<Display />', () => {
         getByText(/closed/i);
     });
 
+    
     it('closed & locked', () => {
         const { getByText } = render(<Display closed={true} locked={true} />);
 
         // checking for correct text
-        getByText(/locked/i);
+        // adding '^' and '$' expressions to /locked/i to target EXACTLY the word locked, because locked can be mixed with unlocked
+        getByText(/^locked$/i);
         getByText(/closed/i);
     });
 });
