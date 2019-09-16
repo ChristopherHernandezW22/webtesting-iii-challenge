@@ -8,4 +8,14 @@ describe('<Controls />', () => {
     it('renders without crashing', () => {
         render(<Controls />);
     });
+
+    it('open and unlocked', () => {
+        const { getByText } = render(<Controls closed={false} locked={false} />);
+        const closeButton = getByText(/close gate/i);
+        const lockButton = getByText(/lock gate/i);
+
+        
+        expect(closeButton.disabled).toBeFalsy();
+        expect(lockButton.disabled).toBeTruthy();
+    });
 });
