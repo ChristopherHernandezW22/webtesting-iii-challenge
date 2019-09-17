@@ -7,4 +7,14 @@ describe('<Dashboard', () => {
     it('renders without crashing', () => {
         render(<Dashboard />);
     })
+    it('default state open and unlocked', () => {
+        const { getByText } = render (<Dashboard />);
+        
+        //verify open & unlocked
+        getByText(/^open$/i);
+        getByText(/^unlocked$/i);
+
+        const lockButton = getByText(/^lock gate$/i);
+        const closeButton = getByText(/^close gate$/i);
+    })
 })
